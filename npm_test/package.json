@@ -1,0 +1,11 @@
+{
+  "name": "npm_test",
+  "version": "1.0.0",
+  "description": "Let mess with npm and see what we can do",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Hernandez",
+  "license": "ISC"
+}
