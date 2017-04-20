@@ -4,7 +4,7 @@
   "description": "Simple app to try out Jasmine",
   "main": "index.js",
   "scripts": {
-    "test": "./node_packages/.bin/jasmine-node spec"
+    "test": "./node_modules/.bin/jasmine-node spec"
   },
   "author": "Jose Hernandez",
   "license": "ISC",
