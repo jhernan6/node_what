@@ -14,6 +14,7 @@ describe("Hello Jasmine Server", function(){
 		it("returns Hello Jasmine", function(done){
 			request.get(base_url, function(error, response, body){
 				expect(body).toBe("Hello Jasmine");
+				done();
 			});
 		});
 	});
