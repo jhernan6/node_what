@@ -1,0 +1,11 @@
+{
+  "name": "beaker1",
+  "version": "1.0.0",
+  "description": "Simple Node.JS project from Udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Hernandez",
+  "license": "ISC"
+}
