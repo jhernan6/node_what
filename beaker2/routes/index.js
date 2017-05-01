@@ -9,7 +9,7 @@ for(var number in flight_data){
 exports.flight = function(req, res){
 	var number = req.param('number');
 	if(typeof flight_data[number] === 'undefined'){
-		res.status(404).json({status: 'Error with flight'});
+		res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
 	}
 	else{
 		res.json(flight_data[number].getInformation());
