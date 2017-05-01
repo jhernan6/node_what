@@ -2,10 +2,9 @@ var flight = require('../flight');
 var flight_data = require('../data');
 //Creating flight objects
 
-for(var number in flight){
-	flight[number] = flight(flight_data[number]);
+for(var number in flight_data){
+	flight_data[number] = flight(flight_data[number]);
 };
-
 
 exports.flight = function(req, res){
 	var number = req.param('number');
