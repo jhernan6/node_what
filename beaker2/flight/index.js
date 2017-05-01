@@ -21,7 +21,7 @@ var Flight = function(){
 		this.data.actualDepart = Date.now();
 	};
 
-	this.triggerArrive = fucntion() {
+	this.triggerArrive = function(){
 		this.data.actualArrive = Date.now();
 	};
 
