@@ -1,11 +1,11 @@
-var flight = ('../flight');
+var flight = require('../flight');
 
 //Creating flight objects
 
 var flight1 = flight({
 	number: 1,
 	origin: 'LAX',
-	destination:'DCA'.
+	destination:'DCA',
 	departs: '9AM',
 	arrives: '4PM'
 });
