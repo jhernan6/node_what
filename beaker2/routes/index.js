@@ -27,3 +27,6 @@ exports.arrived = function(req, res){
         }
 };
 
+exports.list = function(req, res){
+	res.render('list', {title: 'All Flights', flight_data: flight_data});      
+};
