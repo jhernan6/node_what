@@ -15,3 +15,15 @@ exports.flight = function(req, res){
 		res.json(flight_data[number].getInformation());
 	}
 };
+
+exports.arrived = function(req, res){
+        var number = req.param('number');
+        if(typeof flight_data[number] === 'undefined'){
+                res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
+        }
+        else{
+		flight_data[number].triggerArrive();
+                res.json({status: 'Done'});
+        }
+};
+
