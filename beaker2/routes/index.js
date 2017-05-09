@@ -1,32 +1,38 @@
-var flight = require('../flight');
-var flight_data = require('../data');
-//Creating flight objects
+module.exports = function(flights){
 
-for(var number in flight_data){
-	flight_data[number] = flight(flight_data[number]);
-};
+	var flight = require('../flight');
+	//Creating flight objects
 
-exports.flight = function(req, res){
-	var number = req.param('number');
-	if(typeof flight_data[number] === 'undefined'){
-		res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
-	}
-	else{
-		res.json(flight_data[number].getInformation());
-	}
-};
+	for(var number in flights){
+		flights[number] = flight(flights[number]);
+	};
 
-exports.arrived = function(req, res){
-        var number = req.param('number');
-        if(typeof flight_data[number] === 'undefined'){
-                res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
-        }
-        else{
-		flight_data[number].triggerArrive();
-                res.json({status: 'Done'});
-        }
-};
+	var functions = {};
 
-exports.list = function(req, res){
-	res.render('list', {title: 'All Flights', flight_data: flight_data});      
-};
+	functions.flight = function(req, res){
+		var number = req.param('number');
+		if(typeof flights[number] === 'undefined'){
+			res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
+		}
+		else{
+			res.json(flights[number].getInformation());
+		}
+	};
+
+	functions.arrived = function(req, res){
+		var number = req.param('number');
+		if(typeof flights[number] === 'undefined'){
+			res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
+		}
+		else{
+			flights[number].triggerArrive();
+			res.json({status: 'Done'});
+		}
+	};
+
+	functions.list = function(req, res){
+		res.render('list', {title: 'All Flights', flights: flights});      
+	};
+
+	return functions;
+}
