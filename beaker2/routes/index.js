@@ -1,3 +1,5 @@
+var FlightSchema = require('../schemas/flights');
+
 module.exports = function(flights){
 
 	var flight = require('../flight');
@@ -26,6 +28,16 @@ module.exports = function(flights){
 		}
 		else{
 			flights[number].triggerArrive();
+
+			var record = new FlightSchema(flights[number].getInformation());
+			record.save(function(err){
+				if (err){
+					console.log(err);
+					res.status(500).json({status: 'Failure'});
+				}else{
+					res.json({status: "Success"});
+				}
+			});
 			res.json({status: 'Done'});
 		}
 	};
