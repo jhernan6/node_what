@@ -47,7 +47,7 @@ module.exports = function(flights){
 	};
 
 	functions.arrivals = function(req, res){
-		FlightSchema.find()setOption({sort: 'actualArrive'})
+		FlightSchema.find().setOptions({sort: 'actualArrive'})
 			.exec(function(err, arrivals){
 				if(err){
 					console.log(err);
