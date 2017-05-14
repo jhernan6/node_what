@@ -46,5 +46,17 @@ module.exports = function(flights){
 		res.render('list', {title: 'All Flights', flights: flights});      
 	};
 
+	functions.arrivals = function(req, res){
+		FlightSchema.find()setOption({sort: 'actualArrive'})
+			.exec(function(err, arrivals){
+				if(err){
+					console.log(err);
+					res.status(500).json({status: "Failure"});
+				}else{
+					res.render('arrivals',{title: "All Arrival",arrivals});
+				};
+			});
+	};
+
 	return functions;
 }
