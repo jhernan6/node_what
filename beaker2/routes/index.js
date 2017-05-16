@@ -64,5 +64,18 @@ module.exports = function(flights){
 			});
 	};
 
+	functions.login = function(req, res){
+		res.render('login', {title: 'Login'});
+	};
+
+	functions.user = function(req, res){
+		if(typeof req.session.passport === 'undefined'){
+			res.redirect('/login');
+		}else{
+			res.render('user',{title: 'Welcome', user: req.user});
+		}
+		
+	};
+
 	return functions;
 }
