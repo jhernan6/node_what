@@ -13,6 +13,8 @@ module.exports = function(flights){
 
 	functions.flight = function(req, res){
 		var number = req.param('number');
+		req.session.lastNumber = number;
+
 		if(typeof flights[number] === 'undefined'){
 			res.status(404).json({status: 'Error: That flight does not exist. Check the flight number.'});
 		}
@@ -53,7 +55,11 @@ module.exports = function(flights){
 					console.log(err);
 					res.status(500).json({status: "Failure"});
 				}else{
-					res.render('arrivals',{title: "All Arrival",arrivals});
+					res.render('arrivals',{
+						title: "All Arrival",
+						arrivals: arrivals,
+						lastNumber: req.session.lastNumber
+						});
 				};
 			});
 	};
