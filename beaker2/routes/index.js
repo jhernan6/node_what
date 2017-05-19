@@ -1,4 +1,20 @@
 var FlightSchema = require('../schemas/flights');
+var Emitter = require('event').EventEmitter;
+var flightEmitter = new Emitter();
+
+
+flightEmitter.on('arrival', function(flight){
+	var record = new FlightSchema(flights[number].getInformation());
+	record.save(function(err){
+		if (err){
+			console.log(err);
+		};
+	});
+});
+
+flightEmitter.on('arrival', function(flight){
+	console.log('Flight Arrived: '+ flight.data.number);
+}
 
 module.exports = function(flights){
 
@@ -30,6 +46,8 @@ module.exports = function(flights){
 		}
 		else{
 			flights[number].triggerArrive();
+			flightEmitter.emit('arrival', flights[number]);
+			res.json({status: 'success'});
 
 			var record = new FlightSchema(flights[number].getInformation());
 			record.save(function(err){
