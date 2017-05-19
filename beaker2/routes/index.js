@@ -1,5 +1,5 @@
 var FlightSchema = require('../schemas/flights');
-var Emitter = require('event').EventEmitter;
+var Emitter = require('events').EventEmitter;
 var flightEmitter = new Emitter();
 
 
@@ -14,7 +14,7 @@ flightEmitter.on('arrival', function(flight){
 
 flightEmitter.on('arrival', function(flight){
 	console.log('Flight Arrived: '+ flight.data.number);
-}
+});
 
 module.exports = function(flights){
 
