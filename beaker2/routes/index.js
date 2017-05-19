@@ -4,7 +4,7 @@ var flightEmitter = new Emitter();
 
 
 flightEmitter.on('arrival', function(flight){
-	var record = new FlightSchema(flights[number].getInformation());
+	var record = new FlightSchema(flight.getInformation());
 	record.save(function(err){
 		if (err){
 			console.log(err);
@@ -49,16 +49,6 @@ module.exports = function(flights){
 			flightEmitter.emit('arrival', flights[number]);
 			res.json({status: 'success'});
 
-			var record = new FlightSchema(flights[number].getInformation());
-			record.save(function(err){
-				if (err){
-					console.log(err);
-					res.status(500).json({status: 'Failure'});
-				}else{
-					res.json({status: "Success"});
-				}
-			});
-			res.json({status: 'Done'});
 		}
 	};
 
